@@ -1,75 +1,74 @@
+<!-- Updated BMI Calculator with Tailwind CSS -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BMI Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <div class="form-section">
-            <div class="heading-part">
-              <div>
-                <img src="jpg/weight-machine.svg" alt="" class="weight">
-              </div>
-              <div>
-                <a href="index.html" class="home"> 
-                  <h1>BMI Calculator</h1>
-                </a>
-                <p class="subtitle">Body Mass Index</p>
-              </div>
+<body class="flex justify-center items-center h-screen bg-gray-200">
+    <div class="w-[1240px] h-[480px] bg-white p-5 rounded-lg shadow-lg flex gap-5 mx-auto">
+        <div class="w-full p-5">
+            <div class="flex gap-5 items-center">
+                <img src="jpg/weight-machine.svg" alt="" class="w-[100px]">
+                <div>
+                    <a href="index.html" class="no-underline">
+                        <h1 class="text-4xl font-bold text-gray-800 pb-2">BMI Calculator</h1>
+                    </a>
+                    <p class="text-lg font-semibold text-gray-500">Body Mass Index</p>
+                </div>
             </div>
 
-            <form id="bmiForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="gender">GENDER</label>
-                        <div class="gender-buttons">
-                            <button type="button" class="gender-btn active" data-value="male">Male</button>
-                            <button type="button" class="gender-btn" data-value="female">Female</button>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="age">AGE</label>
-                        <input type="number" id="age" name="age" min="2" max="120" placeholder="Years" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="height">Input Height | CentiMeter | Meter</label>
-                      
-                      <div class="height-input">
-                        <input type="number" id="heightFt" name="heightFt" placeholder="Feet" required class="active">
-                        <input type="number" id="heightIn" name="heightIn" placeholder="Inches" required class="active">
-                        <input type="number" id="heightCm" name="heightCm" placeholder="Centimeter">
-                        <input type="number" id="heightM" name="heightM" placeholder="Meter">
-                      </div>
-                      <div class="height-unit-toggle">
-                        <button type="button" class="height-toggle-btn active" data-unit="ft-in">Feet & Inches</button>
-                        <button type="button" class="height-toggle-btn" data-unit="cm">Centimeter</button>
-                        <button type="button" class="height-toggle-btn" data-unit="m">Meter</button>
-                      </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="weight">WEIGHT (kg)</label>
-                        <input type="number" id="weight" name="weight" placeholder="Kilograms" required>
+              <form id="bmiForm" class="grid grid-cols-2 gap-5 mt-6">
+              
+                <div class="flex flex-col">
+                    <label class="text-sm text-gray-600 uppercase">gender</label>
+                    <div class="flex gap-3">
+                        <button type="button" class="flex-1 py-2 bg-gray-200 border border-gray-300 rounded text-sm text-gray-800  gender-btn active" data-value="male"">Male</button>
+                        <button type="button" class="flex-1 py-2 bg-gray-200 border border-gray-300 rounded text-sm text-gray-800 gender-btn" data-value="female"">Female</button>
                     </div>
                 </div>
-                <button type="submit">Calculate BMI</button>
-            </form>
+
+                <div class="flex flex-col">
+                    <label class="text-sm text-gray-600">AGE</label>
+                    <input type="number" id="age" name="age" min="2" max="120" placeholder="Years" required class="w-full p-2 border border-gray-300 rounded-lg text-sm appearance-none">
+                </div>
+
+                <div class="flex flex-col ">
+                    <label class="text-sm text-gray-600 uppercase">Height</label>
+                    <div class="flex gap-3 pb-4">
+                        <input type="number" id="heightFt" name="heightFt" placeholder="Feet" required class="w-full p-2 border border-gray-300 rounded-lg text-sm font-semibold ">
+                        <input type="number" id="heightIn" name="heightIn" placeholder="Inches" required class="w-full p-2 border border-gray-300 rounded-lg text-sm font-semibold ">
+                        <input type="number" id="heightCm" name="heightCm" placeholder="Centimeter" class="w-full p-2 border border-gray-300 rounded-lg text-sm font-semibold hidden">
+                        <input type="number" id="heightM" name="heightM" placeholder="Meter" class="w-full p-2 border border-gray-300 rounded-lg text-sm font-semibold hidden">
+                    </div>
+                    <div class="flex gap-3 mb-4">
+                      <button type="button" class="px-4 py-2 bg-gray-200 border border-gray-300 rounded text-sm text-gray-800" onclick="toggleHeightInputs('feet')">Feet & Inches</button>
+                      <button type="button" class="px-4 py-2 bg-gray-200 border border-gray-300 rounded text-sm text-gray-800" onclick="toggleHeightInputs('cm')">Centimeter</button>
+                      <button type="button" class="px-4 py-2 bg-gray-200 border border-gray-300 rounded text-sm text-gray-800" onclick="toggleHeightInputs('meter')">Meter</button>
+                  </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="text-sm text-gray-600 uppercase">WEIGHT (kg)</label>
+                    <input type="number" id="weight" name="weight" placeholder="Kilograms" required class="w-full p-2 border border-gray-300 rounded-lg text-sm">
+                </div>
+
+              </form>
+              <button type="submit" class=" flex mx-auto px-4 py-2 bg-green-600 text-white rounded-lg text-lg hover:px-6 duration-300 transition-all mt-4">Calculate BMI</button>
         </div>
 
-        <div class="result-section">
-            <h2>Your BMI is <span id="bmiValue"> - </span> </h2> 
-            
-            <div class="bmi-categories">
-                <span id="underweight">Underweight</span>
-                <span id="normal">Normal</span>
-                <span id="overweight">Overweight</span>
-                <span id="obesity">Obesity</span>
+        <div class="w-6/12 p-5 bg-gray-50 rounded-lg flex flex-col justify-center mx-auto">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Your BMI is <span id="bmiValue" class="text-green-600 font-bold text-2xl"> - </span></h2>
+            <div class="flex flex-col gap-2 mb-4 text-center font-semibold ">
+                <span id="underweight" class="py-4 bg-gray-200/60 rounded-lg text-sm text-gray-800">Underweight</span>
+                <span id="normal" class="py-4 bg-gray-200/60 rounded-lg text-sm text-gray-800">Normal</span>
+                <span id="overweight" class="py-4 bg-gray-200/60 rounded-lg text-sm text-gray-800">Overweight</span>
+                <span id="obesity" class="py-4 bg-gray-200/60 rounded-lg text-sm text-gray-800">Obesity</span>
             </div>
-            <p class="recommendation" id="recommendation"></p>
-            <p class="healthy-range">Healthy BMI range: <strong>18.5 kg/m² - 25 kg/m²</strong></p>
+            <p class="text-center text-sm text-gray-600 font-bold" id="recommendation"></p>
+            <p class="text-center text-base text-gray-600">Healthy BMI range: <strong>18.5 kg/m² - 25 kg/m²</strong></p>
         </div>
     </div>
     <script src="script.js"></script>

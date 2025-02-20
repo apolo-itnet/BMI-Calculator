@@ -1,107 +1,118 @@
-// On page load, make sure the correct height unit input is visible
-document.addEventListener("DOMContentLoaded", function() {
-  const defaultUnit = document.querySelector('.height-toggle-btn.active').dataset.unit;
-  const heightInputs = document.querySelectorAll('.height-input input');
 
-  // Hide all inputs first
-  heightInputs.forEach(input => input.style.display = 'none');
-
-  // Show relevant inputs based on default unit
-  if (defaultUnit === 'ft-in') {
-    document.getElementById('heightFt').style.display = 'block';
-    document.getElementById('heightIn').style.display = 'block';
-  } else if (defaultUnit === 'cm') {
-    document.getElementById('heightCm').style.display = 'block';
-  } else if (defaultUnit === 'm') {
-    document.getElementById('heightM').style.display = 'block';
-  }
-});
-
-// Toggle gender buttons
-document.querySelectorAll('.gender-btn').forEach(button => {
-  button.addEventListener('click', function () {
-    document.querySelectorAll('.gender-btn').forEach(btn => btn.classList.remove('active'));
-    this.classList.add('active');
-  });
-});
-
-// Toggle height unit input
-document.querySelectorAll('.height-toggle-btn').forEach(button => {
-  button.addEventListener('click', function () {
-    document.querySelectorAll('.height-toggle-btn').forEach(btn => btn.classList.remove('active'));
-    this.classList.add('active');
-
-    const unit = this.dataset.unit;
-    const heightInputs = document.querySelectorAll('.height-input input');
-
-    // Hide all inputs first
-    heightInputs.forEach(input => input.style.display = 'none');
-
-    // Show relevant inputs based on unit
-    if (unit === 'ft-in') {
-      document.getElementById('heightFt').style.display = 'block';
-      document.getElementById('heightIn').style.display = 'block';
-    } else if (unit === 'cm') {
-      document.getElementById('heightCm').style.display = 'block';
-    } else if (unit === 'm') {
-      document.getElementById('heightM').style.display = 'block';
-    }
-  });
-});
-
-// BMI Calculation Logic
-document.getElementById('bmiForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-
-  const gender = document.querySelector('.gender-btn.active').dataset.value;
-  const age = parseInt(document.getElementById('age').value);
-  const weight = parseFloat(document.getElementById('weight').value);
-
-  const heightUnit = document.querySelector('.height-toggle-btn.active').dataset.unit;
-  let heightInMeters;
-
-  if (heightUnit === 'ft-in') {
-    const heightFt = parseFloat(document.getElementById('heightFt').value);
-    const heightIn = parseFloat(document.getElementById('heightIn').value);
-    heightInMeters = ((heightFt * 12) + heightIn) * 0.0254; // convert to meters
-  } else if (heightUnit === 'cm') {
-    const heightCm = parseFloat(document.getElementById('heightCm').value);
-    heightInMeters = heightCm / 100; // convert to meters
-  } else if (heightUnit === 'm') {
-    heightInMeters = parseFloat(document.getElementById('heightM').value);
-  }
-
-  const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
-  document.getElementById('bmiValue').textContent = bmi;
-
-  // Categorize BMI
+document.addEventListener("DOMContentLoaded", function () {
+  // Selecting elements
+  const heightFt = document.getElementById("heightFt");
+  const heightIn = document.getElementById("heightIn");
+  const heightCm = document.getElementById("heightCm");
+  const heightM = document.getElementById("heightM");
+  const weight = document.getElementById("weight");
+  const bmiValue = document.getElementById("bmiValue");
+  const recommendation = document.getElementById("recommendation");
+  const genderButtons = document.querySelectorAll(".gender-btn");
+  const heightButtons = document.querySelectorAll("button[onclick^='toggleHeightInputs']");
   const categories = {
-    Underweight: bmi < 18.5,
-    Normal: bmi >= 18.5 && bmi < 25,
-    Overweight: bmi >= 25 && bmi < 30,
-    Obesity: bmi >= 30
+      underweight: document.getElementById("underweight"),
+      normal: document.getElementById("normal"),
+      overweight: document.getElementById("overweight"),
+      obesity: document.getElementById("obesity"),
   };
 
-  let healthCategory = Object.keys(categories).find(key => categories[key]);
-  let recommendation = {
-    Underweight: "Increase your calorie intake for a healthy weight.",
-    Normal: "Your weight is within a healthy range. Keep it up!",
-    Overweight: "Try a balanced diet and regular exercise.",
-    Obesity: "Consult a healthcare professional for a weight plan."
-  };
+  // Set default active selections
+  genderButtons[0].classList.add("bg-green-600", "text-white"); // Default Male
+  heightButtons[0].classList.add("bg-green-600", "text-white"); // Default Feet & Inches
 
-  // Update BMI category and recommendation
-  document.querySelectorAll('.bmi-categories span').forEach(span => {
-    span.classList.remove('active');
+  // Function to toggle gender selection
+  genderButtons.forEach(button => {
+      button.addEventListener("click", function () {
+          genderButtons.forEach(btn => btn.classList.remove("bg-green-600", "text-white"));
+          this.classList.add("bg-green-600", "text-white");
+      });
   });
 
-  document.getElementById(healthCategory.toLowerCase()).classList.add('active');
-  document.getElementById('recommendation').textContent = recommendation[healthCategory];
+  
 
-  // Show warning for red categories
-  if (healthCategory === "Underweight" || healthCategory === "Overweight" || healthCategory === "Obesity") {
-    document.getElementById('recommendation').style.color = "red";
-  } else {
-    document.getElementById('recommendation').style.color = "#4caf50";
+  // Function to toggle height input fields
+window.toggleHeightInputs = function (unit) {
+  // Hide all height input fields
+  heightFt.classList.add("hidden");
+  heightIn.classList.add("hidden");
+  heightCm.classList.add("hidden");
+  heightM.classList.add("hidden");
+
+  // Remove active classes from all height buttons
+  heightButtons.forEach(btn => btn.classList.remove("bg-green-600", "text-white", "border-green-600"));
+
+  // Show the relevant height input fields based on the selected unit
+  if (unit === "feet") {
+      heightFt.classList.remove("hidden");
+      heightIn.classList.remove("hidden");
+  } else if (unit === "cm") {
+      heightCm.classList.remove("hidden");
+  } else if (unit === "meter") {
+      heightM.classList.remove("hidden");
   }
+
+  // Add active classes to the clicked button
+  const activeButton = document.querySelector(`button[onclick='toggleHeightInputs("${unit}")']`);
+  activeButton.classList.add("bg-green-600", "text-white", "border-green-600");
+  };
+
+  // Function to calculate BMI
+  function calculateBMI() {
+      let heightInMeters = 0;
+      let weightValue = parseFloat(weight.value);
+
+      if (!heightFt.classList.contains("hidden")) {
+          let feet = parseFloat(heightFt.value) || 0;
+          let inches = parseFloat(heightIn.value) || 0;
+          heightInMeters = (feet * 12 + inches) * 0.0254;
+      } else if (!heightCm.classList.contains("hidden")) {
+          heightInMeters = parseFloat(heightCm.value) / 100;
+      } else if (!heightM.classList.contains("hidden")) {
+          heightInMeters = parseFloat(heightM.value);
+      }
+
+      if (heightInMeters > 0 && weightValue > 0) {
+          let bmi = weightValue / (heightInMeters * heightInMeters);
+          bmi = bmi.toFixed(1);
+          bmiValue.textContent = bmi;
+          bmiValue.classList.add("bg-green-600", "text-white", "p-2", "rounded");
+          updateCategory(bmi);
+      } else {
+          bmiValue.textContent = "-";
+          recommendation.textContent = "Please enter valid values for height and weight.";
+          bmiValue.classList.remove("bg-green-600", "text-white");
+      }
+  }
+
+  // Function to update category highlight and recommendation
+  function updateCategory(bmi) {
+      Object.values(categories).forEach(category => category.classList.remove("bg-green-600", "text-white"));
+      recommendation.classList.remove("text-red-500", "text-green-500");
+      
+      if (bmi < 18.5) {
+          categories.underweight.classList.add("bg-green-600", "text-white");
+          recommendation.textContent = "Warning: You are underweight. Consider a balanced diet.";
+          recommendation.classList.add("text-red-500");
+      } else if (bmi >= 18.5 && bmi < 25) {
+          categories.normal.classList.add("bg-green-600", "text-white");
+          recommendation.textContent = " Nice Shape";
+          recommendation.textContent = " You have a normal weight. Keep up the healthy lifestyle!";
+          recommendation.classList.add("text-green-500");
+      } else if (bmi >= 25 && bmi < 30) {
+          categories.overweight.classList.add("bg-green-600", "text-white");
+          recommendation.textContent = "Warning: You are overweight. Consider regular exercise and a healthy diet.";
+          recommendation.classList.add("text-red-500");
+      } else {
+          categories.obesity.classList.add("bg-green-600", "text-white");
+          recommendation.textContent = "Warning: You are in the obesity category. Consult a healthcare provider.";
+          recommendation.classList.add("text-red-500");
+      }
+  }
+
+  // Event listener for BMI calculation
+  document.querySelector("button[type='submit']").addEventListener("click", function (e) {
+      e.preventDefault();
+      calculateBMI();
+  });
 });
