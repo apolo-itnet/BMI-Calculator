@@ -23,109 +23,76 @@
           </div>
         </div>
 
+       
+   
+
         <form id="bmiForm" class="grid grid-cols-2 gap-5 mb-6 p-2">
-            
-          <!-- Gender Selection -->
-          <div class="space-y-2">
-            <label class="text-sm font-medium text-gray-700">Gender</label>
-            <div class="flex gap-2">
-              <button
-                type="button"
-                class="flex-1 py-3 text-sm text-gray-800 rounded-md gender-btn bg-gray-200"
-                data-value="male"
-              >
-                Male
-              </button>
-              <button
-                type="button"
-                class="flex-1 py-3 text-sm text-gray-800 rounded-md gender-btn bg-gray-200"
-                data-value="female"
-              >
-                Female
-              </button>
+            <!-- Gender Selection -->
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-gray-700">Gender</label>
+              <div class="flex gap-2">
+                <button type="button" class="flex-1 py-3 text-sm text-gray-800 rounded-md gender-btn bg-gray-200" data-value="male">
+                  Male
+                </button>
+                <button type="button" class="flex-1 py-3 text-sm text-gray-800 rounded-md gender-btn bg-gray-200" data-value="female">
+                  Female
+                </button>
+              </div>
             </div>
-          </div>
-
-          <!-- Age Input -->
-          <div class="space-y-2">
-            <label class="text-sm font-medium text-gray-700">Age</label>
-            <input
-              type="number"
-              id="age"
-              placeholder="Years"
-              class="w-full p-2 border rounded-lg outline-none focus:ring-1 focus:ring-green-600"
-            />
-          </div>
-
-          <!-- Height Input -->
-          <div class="space-y-2">
-            <label class="text-sm font-medium text-gray-700">Height</label>
-            <div class="flex gap-2">
-              <input
-                type="number"
-                id="heightFt"
-                placeholder="Feet"
-                class="w-full px-2 p-2 border rounded-lg outline-none focus:ring-1 focus:ring-green-600"
-              />
-              <input
-                type="number"
-                id="heightIn"
-                placeholder="Inches"
-                class="w-full px-2 p-2 border rounded-lg outline-none focus:ring-1 focus:ring-green-600"
-              />
-              <input
-                type="number"
-                id="heightCm"
-                placeholder="CM"
-                class="w-full px-2 p-2 border rounded-lg outline-none focus:ring-1 focus:ring-green-600 hidden"
-              />
-              <input
-                type="number"
-                id="heightM"
-                placeholder="Meters"
-                class="w-full px-2 p-2 border rounded-lg outline-none focus:ring-1 focus:ring-green-600 hidden"
-              />
+          
+            <!-- Age Input -->
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-gray-700">Age</label>
+              <div class="relative">
+                <input type="number" id="age" class="w-full p-2 pr-12 border rounded-lg outline-none focus:ring-1 focus:ring-green-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">Years</span>
+              </div>
             </div>
-            <div class="flex gap-3">
-              <button
-                type="button"
-                onclick="toggleHeightInputs('feet')"
-                data-unit="feet"
-                class="flex-1 py-3 text-sm rounded-lg height-btn bg-gray-200 text-gray-800"
-              >
-                Feet/Inch
-              </button>
-              <button
-                type="button"
-                onclick="toggleHeightInputs('cm')"
-                data-unit="cm"
-                class="flex-1 py-3 text-sm rounded-lg height-btn bg-gray-200 text-gray-800"
-              >
-                CM
-              </button>
-              <button
-                type="button"
-                onclick="toggleHeightInputs('meter')"
-                data-unit="meter"
-                class="flex-1 py-3 text-sm rounded-lg height-btn bg-gray-200 text-gray-800"
-              >
-                Meters
-              </button>
+          
+            <!-- Height Input -->
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-gray-700">Height</label>
+              <div class="flex gap-2">
+                <div class="relative w-full">
+                  <input type="number" id="heightFt" class="w-full p-2 pr-12 border rounded-lg outline-none focus:ring-1 focus:ring-green-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                  <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">Feet</span>
+                </div>
+                <div class="relative w-full">
+                  <input type="number" id="heightIn" class="w-full p-2 pr-12 border rounded-lg outline-none focus:ring-1 focus:ring-green-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                  <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">Inches</span>
+                </div>
+                <div class="relative w-full hidden">
+                  <input type="number" id="heightCm" class="w-full p-2 pr-12 border rounded-lg outline-none focus:ring-1 focus:ring-green-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                  <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">CM</span>
+                </div>
+                <div class="relative w-full hidden">
+                  <input type="number" id="heightM" class="w-full p-2 pr-12 border rounded-lg outline-none focus:ring-1 focus:ring-green-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                  <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">Meters</span>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <button type="button" onclick="toggleHeightInputs('feet')" data-unit="feet" class="flex-1 py-3 text-sm rounded-lg height-btn bg-gray-200 text-gray-800">
+                  Feet/Inch
+                </button>
+                <button type="button" onclick="toggleHeightInputs('cm')" data-unit="cm" class="flex-1 py-3 text-sm rounded-lg height-btn bg-gray-200 text-gray-800">
+                  CM
+                </button>
+                <button type="button" onclick="toggleHeightInputs('meter')" data-unit="meter" class="flex-1 py-3 text-sm rounded-lg height-btn bg-gray-200 text-gray-800">
+                  Meters
+                </button>
+              </div>
             </div>
-          </div>
-
-          <!-- Weight Input -->
-          <div class="space-y-2">
-            <label class="text-sm font-medium text-gray-700">Weight (kg)</label>
-            <input
-              type="number"
-              id="weight"
-              placeholder="Kilograms"
-              class="w-full p-2 border rounded-lg outline-none focus:ring-1 focus:ring-green-600"
-            />
-          </div>
-
+          
+            <!-- Weight Input -->
+            <div class="space-y-2">
+              <label class="text-sm font-medium text-gray-700">Weight (kg)</label>
+              <div class="relative">
+                <input type="number" id="weight" class="w-full p-2 pr-16 border rounded-lg outline-none focus:ring-1 focus:ring-green-600 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                <span class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">Kg</span>
+              </div>
+            </div>
         </form>
+          
 
         <hr class="w-10/12 mx-auto">
 
@@ -163,10 +130,8 @@
           </div>
         </div>
 
-        <p class="text-center text-base my-6 text-orange-600" id="recommendation">
-          Enter your details to calculate BMI
-        </p>
-        <p class="text-center text-sm text-gray-600">Healthy BMI range: <strong class="text-green-600">18.5 kg/m² - 25 kg/m²</strong></p>
+        <p class="text-center text-sm text-gray-600 my-6">Healthy BMI range: <strong class="text-green-600">18.5 kg/m² - 25 kg/m²</strong></p>
+        <p class="text-center text-base text-rose-600" id="recommendation"> Enter your details to calculate BMI </p>
       </div>
     </div>
     <script src="script.js"></script>
