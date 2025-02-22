@@ -7,12 +7,12 @@
     <title>BMI Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="flex justify-center items-center h-screen bg-gray-200">
+  <body class="flex justify-center items-center md:h-screen bg-gray-200">
 
-    <div class="w-full max-w-6xl bg-white p-6 rounded-xl shadow-lg flex gap-6">
+    <div class="w-full lg:max-w-6xl max-w-3xl bg-white p-6 rounded-xl shadow-lg flex lg:flex-row flex-col gap-6">
 
       <!-- Input Section -->
-      <div class="w-full ">
+      <div class="w-full">
         <div class="flex items-center gap-4 mb-6">
             <img src="jpg/weight-machine.svg" alt="" class="w-[100px]">
           <div>
@@ -26,7 +26,7 @@
        
    
 
-        <form id="bmiForm" class="grid grid-cols-2 gap-5 mb-6 p-2">
+        <form id="bmiForm" class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6 p-2">
             <!-- Gender Selection -->
             <div class="space-y-2">
               <label class="text-sm font-medium text-gray-700">Gender</label>
@@ -93,16 +93,15 @@
             </div>
         </form>
 
-        <hr class="w-10/12 mx-auto">
+        <hr class="w-10/12 mx-auto hidden   ">
 
         <div class="flex "> 
             <button id="calculateBtn" class="flex mx-auto mt-3 px-4 py-3 bg-green-600 text-white rounded-lg hover:px-6 duration-300 transition-all"> Calculate BMI </button>
-            <!-- <button id="clearBtn" class="flex mx-auto mt-3 px-4 py-3 bg-green-600 text-white rounded-lg"> Clear </button> -->
         </div>
       </div>
 
       <!-- Result Section -->
-      <div class="w-7/12 flex flex-col justify-center p-6 bg-gray-50 rounded-xl font-semibold text-center">
+      <div class="w-full lg:w-7/12 flex flex-col mx-auto justify-center p-6 bg-gray-50 rounded-xl font-semibold text-center">
         <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Your BMI is <span id="bmiValue" class="text-green-600 font-bold text-2xl"> - </span></h2>
 
         <div class="space-y-2">
