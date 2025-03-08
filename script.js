@@ -9,28 +9,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const recommendation = document.getElementById("recommendation");
     const heightButtons = document.querySelectorAll(".height-btn");
     const genderButtons = document.querySelectorAll(".gender-btn");
-    const categories = { underweight: "bg-amber-400", normal: "bg-green-600", overweight: "bg-orange-500", obesity: "bg-red-600" };
+    const categories = { underweight: "bg-amber-400", normal: "bg-indigo-500", overweight: "bg-orange-500", obesity: "bg-red-600" };
 
     // Set initial active buttons
-    heightButtons[0].classList.add("bg-green-600", "text-white");
-    genderButtons[0].classList.add("bg-green-600", "text-white");
+    heightButtons[0].classList.add("bg-indigo-500", "text-white");
+    genderButtons[0].classList.add("bg-indigo-500", "text-white");
 
     // Add event listeners to gender buttons
     genderButtons.forEach(button => {
         button.addEventListener("click", function () {
-            genderButtons.forEach(btn => btn.classList.remove("bg-green-600", "text-white"));
-            this.classList.add("bg-green-600", "text-white");
+            genderButtons.forEach(btn => btn.classList.remove("bg-indigo-500", "text-white"));
+            this.classList.add("bg-indigo-500", "text-white");
         });
     });
 
     // Function to toggle height inputs based on selected unit
     window.toggleHeightInputs = function (unit) {
         [heightFt, heightIn, heightCm, heightM].forEach(el => el.parentElement.classList.add("hidden"));
-        document.querySelectorAll(".height-btn").forEach(btn => btn.classList.remove("bg-green-600", "text-white"));
+        document.querySelectorAll(".height-btn").forEach(btn => btn.classList.remove("bg-indigo-500", "text-white"));
         if (unit === "feet") [heightFt, heightIn].forEach(el => el.parentElement.classList.remove("hidden"));
         else if (unit === "cm") heightCm.parentElement.classList.remove("hidden");
         else heightM.parentElement.classList.remove("hidden");
-        document.querySelector(`button[data-unit="${unit}"]`).classList.add("bg-green-600", "text-white");
+        document.querySelector(`button[data-unit="${unit}"]`).classList.add("bg-indigo-500", "text-white");
     };
 
     // Function to validate inputs
