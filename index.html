@@ -7,7 +7,7 @@
     <title>BMI Calculator</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Poppins:ital,wght@0,400;0,600;0,900;1,600&display=swap" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -15,15 +15,15 @@
     <script src="https://cdn.jsdelivr.net/npm/pagedone@1.2.2/src/js/pagedone.js"></script>
 
     <style>
-      .Poppins{
+      .poppins{
         font-family: "Poppins", sans-serif;
       }
-      .Noto{
-        font-family: "Roboto Condensed", sans-serif;
+      .open-sans{
+        font-family: "Open Sans", sans-serif;
       }
     </style>
   </head>
-  <body class="flex flex-col justify-center items-center bg-gray-200 text-black  ">
+  <body class="flex flex-col justify-center items-center bg-gray-200 text-black open-sans lg:text-sm  ">
 
     <!-- navbar -->
     <nav class="flex justify-center items-center my-8">
@@ -152,9 +152,10 @@
       </div>
     </section>
 
-    <section class="w-full lg:max-w-6xl max-w-3xl my-12 bg-white p-6 rounded-xl">
+    <!-- Introduction of BMI -->
+    <section class="w-full lg:max-w-6xl max-w-3xl my-12 bg-white p-6 rounded-xl ">
       <div class="w-full" >
-        <h1 class="pb-6 font-bold text-center text-indigo-600 text-3xl ">Introduction to BMI (Body Mass Index)</h1>
+        <h1 class="pb-6 open-sans font-bold text-center text-indigo-600 text-3xl ">Introduction to BMI (Body Mass Index)</h1>
         <p class="text-justify">
           BMI, or <strong> Body Mass Index</strong>, is a simple measurement that helps determine whether your weight is appropriate for your height. Your weight alone is not enough to assess if you are in a healthy range. For example, a tall but slim person and a short but heavier person may have different weights, yet their overall health conditions can vary.
         </p>
@@ -167,24 +168,26 @@
       </div>
     </section>
 
-
+    <!-- How to calculate BMI -->
     <section class="w-full lg:max-w-6xl max-w-3xl bg-white rounded-xl mb-6">
     <div class="container p-6">
       <h1 class="pb-6 font-bold text-center text-indigo-600 text-3xl Spartan">How to Calculate BMI?</h1>
       <p class="pb-2">To calculate your BMI, you first need to know your weight and height. Once you have these values, follow the steps below:</p>
       <div>
         <h2 class="my-4 font-bold">📌 Step-by-Step Calculation</h2>
+        <div class="flex flex-col gap-3">
           <p class="flex pb-1"> <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i> Measure your weight in kilograms (kg) or pounds (lb).</p>
           <p class="flex pb-1"> <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i> Measure your height in meters (m) or inches (in).</p>
           <p class="flex pb-1"> <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i> Multiply your height by itself → (height × height).</p>
           <p class="flex pb-1"> <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i> Divide your weight by the result from Step 3.</p>
+        </div>
       </div>
 
-      <h3 class="my-4 font-bold">📌 BMI Formula </h3>
+      <h2 class="my-4 font-bold">📌 BMI Formula </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 pb-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 pb-4 gap-2 lg:gap-0">
         
-        <div class="bg-gray-100 border border-indigo-500 rounded-xl p-4 w-10/12">
+        <div class="bg-gray-100 border border-indigo-500 rounded-xl p-4 lg:w-10/12">
           <h4 class="font-bold" >✅ Using the International System (SI Units)</h4>
           <p class="formula font-bold py-2">BMI = <code>weight (kg) ÷ height² (m²)</code></p>
     
@@ -211,15 +214,15 @@
     </div>
     </section>
 
-
+    <!-- BMI range & Normal BMI -->
     <section class="w-full lg:max-w-6xl max-w-3xl rounded-lg mb-6">
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
         <div class="bg-white p-6 rounded-xl text-justify">
-          <h1 class="pb-6 font-bold text-center text-indigo-600 text-3xl Spartan">How to Calculate BMI?</h1>
+          <h1 class="pb-6 font-bold text-center text-indigo-600 text-2xl Spartan">What are the BMI ranges??</h1>
           <p class="pb-2 font-bold">There are five basic ranges within the BMI scale:</p>
-          <div class="pb-2">
+          <div class="pb-2 flex flex-col gap-2">
               <p class="flex"> <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i> Underweight = less than 18.5</p>
               <p class="flex"> <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i> Normal weight = 18.5-24.9;</p>
               <p class="flex"> <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i>Overweight = 25-29.9;</p>
@@ -231,12 +234,24 @@
         </div>
 
         <div class="bg-white p-6 rounded-xl text-justify">
-          <h1 class="pb-6 font-bold text-center text-indigo-600 text-3xl Spartan">Normal BMI</h1>
-          <p>
-            Our BMI calculator makes it a piece of cake for you to find your number. However, please remember that BMI is a rough estimation. The result can be somewhat misleading for individuals who are well-muscled (such as bodybuilders) or for those who have lost a significant amount of muscle (such as the elderly).
-            <br> <br>
-            If you are unsure whether or not you fall within the "normal" range of muscle mass, please consider using one of our more specialized calculators. If you want to determine your body composition that adjusts for skeletal mass, you may want to use our body frame size calculator. Additionally, check out our skinfold body fat calculator to figure out what percentage of your body is fat.
-          </p>
+          <h1 class="pb-6 font-bold text-center text-indigo-600 text-2xl Spartan">Maintaining a Healthy BMI:</h1>
+          <div class="flex flex-col gap-3">
+            <p>To maintain a normal BMI (18.5-24.9) for men, women, and children, here’s a description of food, diet, gym, and weight:
+            </p>
+            <p>
+              <strong>Men:</strong> Daily 2000-2500 calories, protein (fish, chicken), vegetables, fruits, whole grains. Gym 3-5 days (weightlifting, cardio). Weight: 60-80 kg (based on height).
+            </p>
+            <p>
+              <strong>Women:</strong> Daily 1800-2200 calories, protein, fiber, low fat. Gym 3-4 days (yoga, cardio). Weight: 50-70 kg (based on height).
+            </p>
+            <p>
+              <strong>Children:</strong> Daily 1200-1800 calories (age-dependent), milk, fruits, vegetables, protein. 1 hour of play/sports. Weight: 15-50 kg (based on age and height).
+            </p>
+            <p>
+              A balanced diet, regular exercise, and hydration are essential.
+            </p>
+
+          </div>
 
 
         </div>
@@ -245,58 +260,144 @@
 
     </section>
 
-
+    <!-- underweight & overweight -->
     <section class="w-full lg:max-w-6xl max-w-3xl rounded-lg mb-6">
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
+        <!-- overweight part -->
         <div class="bg-white p-6 rounded-xl text-justify">
-          <h1 class="pb-6 font-bold text-center text-indigo-600 text-2xl Spartan">Health Risks Related to Being Overweight?</h1>
-          <p class="pb-2 font-bold">There are five basic ranges within the BMI scale:</p>
+          <h1 class="pb-6 font-bold text-center text-indigo-600 text-xl Spartan">Health Risks Related to Being Overweight?</h1>
+          <p class="pb-4 ">Being overweight is typically defined as having a Body Mass Index (BMI) of 25–29.9, while obesity is a BMI of 30 or higher. Excess body weight can lead to several health complications, including:</p>
 
-          <div class="pb-2 flex flex-col gap-2">
+          <div class="pb-2 flex flex-col gap-4">
 
+            <!-- 1 -->
             <div class="relative inline-block">
-              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base font-bold text-indigo-600 cursor-pointer" data-tooltip-target="default-tooltip">
+              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base md:text-sm font-bold text-indigo-600 cursor-pointer" data-tooltip-target="tooltip-triglycerdes">
                 High Triglycerides </button>
-                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-gray-300 rounded-full bg-white py-2 px-8  text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
-                role="tooltip" id="default-tooltip"> Excess fat, particularly visceral fat, can increase triglyceride levels in the blood, which is a risk factor for heart disease.
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-triglycerdes"> Excess fat, particularly visceral fat, can increase triglyceride levels in the blood, which is a risk factor for heart disease.
                 </div>
             </div>
 
+            <!-- 2 -->
             <div class="relative inline-block">
-              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base font-bold text-indigo-600 cursor-pointer" data-tooltip-target="tooltip-Hypertension">
+              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base md:text-sm font-bold text-indigo-600 cursor-pointer" data-tooltip-target="tooltip-Hypertension">
                   High Blood Pressure (Hypertension) </button>
-                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-gray-300 rounded-full bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
                 role="tooltip" id="tooltip-Hypertension"> Excess weight puts additional strain on the heart and blood vessels, leading to elevated blood pressure, which can damage organs over time.
                 </div>
             </div>
+
+            <!-- 3 -->
+            <div class="relative inline-block">
+              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base md:text-sm font-bold text-indigo-600 cursor-pointer" data-tooltip-target="tooltip-Stroke">
+                Stroke </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Stroke"> Overweight individuals are at higher risk of stroke due to factors like high blood pressure, cholesterol buildup, and inflammation.
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="relative inline-block">
+              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base md:text-sm font-bold text-indigo-600 cursor-pointer" data-tooltip-target="tooltip-Gallbladder">
+                Gallbladder-Related Complications </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Gallbladder"> Being overweight increases the risk of gallstones and gallbladder disease, as excess cholesterol in bile can lead to stone formation.
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="relative inline-block">
+              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base md:text-sm font-bold text-indigo-600 cursor-pointer" data-tooltip-target="tooltip-Insulin">
+                Insulin Resistance </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Insulin"> Excess fat, especially around the abdomen, can interfere with insulin function, leading to insulin resistance, a precursor to type 2 diabetes.
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="relative inline-block">
+              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base md:text-sm font-bold text-indigo-600 cursor-pointer" data-tooltip-target="tooltip-diabetestype2">
+                Type 2 Diabetes </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-diabetestype2"> Closely linked to insulin resistance, being overweight significantly increases the risk of developing type 2 diabetes.
+                </div>
+            </div>
+
 
           </div>
 
         </div>
 
+        <!-- underweight part -->
         <div class="bg-white p-6 rounded-xl text-justify">
-          <h1 class="pb-6 font-bold text-center text-indigo-600 text-2xl Spartan">Health Risks Related to Being Underweight?</h1>
-          <p class="pb-2 font-bold">There are five basic ranges within the BMI scale:</p>
+          <h1 class="pb-6 font-bold text-center text-indigo-600 text-xl Spartan">Health Risks Related to Being Underweight?</h1>
+          <p class="pb-4"> Being underweight is typically defined as having a BMI below 18.5. While less commonly discussed, being underweight also carries significant health risks, including: </p>
 
-          <div class="pb-2 flex flex-col gap-2">
+          <div class="pb-2 flex flex-col gap-4">
 
+            <!-- 1 -->
             <div class="relative inline-block">
-              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base font-bold text-indigo-600 cursor-pointer" data-tooltip-target="default-tooltip">
-                High Triglycerides </button>
-                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-gray-300 rounded-full bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
-                role="tooltip" id="default-tooltip"> Excess fat, particularly visceral fat, can increase triglyceride levels in the blood, which is a risk factor for heart disease.
+              <button class="inline-flex rounded text-base md:text-sm font-bold  cursor-pointer" data-tooltip-target="tooltip-Malnutrition">
+              <i class='bx bx-check font-bold text-red-600 text-2xl pr-1'></i>
+                Malnutrition </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Malnutrition"> Underweight individuals may not be getting adequate nutrients, leading to deficiencies in vitamins, minerals, and macronutrients.
                 </div>
             </div>
 
+            <!-- 2 -->
             <div class="relative inline-block">
-              <i class='bx bx-check font-bold text-indigo-600 text-xl pr-1'></i><button class="inline-flex rounded text-base font-bold text-indigo-600 cursor-pointer" data-tooltip-target="tooltip-Hypertension">
-                  High Blood Pressure (Hypertension) </button>
-                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-gray-300 rounded-full bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
-                role="tooltip" id="tooltip-Hypertension"> Excess weight puts additional strain on the heart and blood vessels, leading to elevated blood pressure, which can damage organs over time.
+              <button class="inline-flex rounded text-base md:text-sm font-bold  cursor-pointer" data-tooltip-target="tooltip-Immune">
+              <i class='bx bx-check font-bold text-red-600 text-2xl pr-1'></i>
+                Weakened Immune System </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Immune"> Insufficient calorie and nutrient intake can impair immune function, increasing susceptibility to infections and illnesses.
                 </div>
             </div>
+
+            <!-- 3 -->
+            <div class="relative inline-block">
+              <button class="inline-flex rounded text-base md:text-sm font-bold  cursor-pointer" data-tooltip-target="tooltip-Osteoporosis">
+              <i class='bx bx-check font-bold text-red-600 text-2xl pr-1'></i>
+                Osteoporosis </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Osteoporosis"> Low body weight, particularly if due to inadequate calcium and vitamin D intake, can lead to reduced bone density and a higher risk of fractures.
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="relative inline-block">
+              <button class="inline-flex rounded text-base md:text-sm font-bold  cursor-pointer" data-tooltip-target="tooltip-Anemia">
+              <i class='bx bx-check font-bold text-red-600 text-2xl pr-1'></i>
+                Anemia </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Anemia"> Underweight individuals may lack sufficient iron, vitamin B12, or folate, leading to anemia, which causes fatigue, weakness, and shortness of breath.
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="relative inline-block">
+              <button class="inline-flex rounded text-base md:text-sm font-bold  cursor-pointer" data-tooltip-target="tooltip-Fertility">
+              <i class='bx bx-check font-bold text-red-600 text-2xl pr-1'></i>
+                Fertility Issues </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Fertility"> In women, being underweight can disrupt menstrual cycles and hormone production, potentially leading to infertility or complications during pregnancy.
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="relative inline-block">
+              <button class="inline-flex rounded text-base md:text-sm font-bold  cursor-pointer" data-tooltip-target="tooltip-Muscle">
+              <i class='bx bx-check font-bold text-red-600 text-2xl pr-1'></i>
+                Muscle Wasting </button>
+                <div class="absolute bottom-full invisible left-auto z-20 mb-3  whitespace-normal border border-indigo-600 rounded-md bg-white py-2 px-4 text-sm text-gray-800 font-semibold transition-opacity duration-300 shadow-[0px_12px_30px_-4px_rgba(16,24,40,0.08);]"
+                role="tooltip" id="tooltip-Muscle"> Lack of adequate protein and calories can cause muscle loss, leading to weakness and reduced physical capacity.
+                </div>
+            </div>
+
 
           </div>
 
